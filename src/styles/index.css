@@ -97,10 +97,11 @@ input {
 @media screen and (min-width: 426px) {
 
   .container {
-    width: 100vw;
+    width: 200vw;
     height: 100vh;
     background-color: #ecf0f1;
-    border: 1px solid blue;
+    border: 1px solid #ecf0f1;
+    margin: auto;
   }
 
   .description {
@@ -112,16 +113,22 @@ input {
     line-height: 2rem;
   }
 
+  .description h2 {
+    margin-top: -200px;
+  }
+
   .login-page {
     width: 80%;
     margin: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 11rem;
+    margin-top: 7rem;
   }
 
-  .login-page img {
+  .description img {
+    position: relative;
+    top: -170px;
     width: 15rem;
     height: 15rem;
   }
@@ -183,6 +190,8 @@ input {
     background-color: #F3B405;
     margin: 25px 25%;
   }
+
+
 }
 /* End Web View */
 
