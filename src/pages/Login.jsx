@@ -1,10 +1,11 @@
 import React from "react";
 import Logo from "../asset/logo.png"
 import Button from "../components/Button";
+import Layout from "../components/Layout";
 
 const Login = () => {
     return(
-        <div className="container">
+        <Layout><div className="wadah w-full">
             <div className="login-page">
                 <div className="description">
                     <img src={Logo} alt="kongkow" />
@@ -28,7 +29,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div></Layout>
     )
 }
 

@@ -96,11 +96,10 @@ input {
 /* Web View */
 @media screen and (min-width: 426px) {
 
-  .container {
-    width: 200vw;
+  .wadah {
+    width: 100%;
     height: 100vh;
-    background-color: #ecf0f1;
-    border: 1px solid #ecf0f1;
+    border: 1px solid black;
     margin: auto;
   }
 
