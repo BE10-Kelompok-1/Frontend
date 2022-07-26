@@ -1,12 +1,16 @@
+import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "../pages";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 import { ThemeContext } from "../utils/context";
 import { reduxAction } from "../utils/redux/actions/action";
+
+axios.defaults.baseURL = "https://virtserver.swaggerhub.com/lukmanhafidz/SocialMediaAppAPI/1.0.0"
 
 export default function AppRouter() {
   const dispatch = useDispatch();
@@ -27,6 +31,7 @@ export default function AppRouter() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
         </Routes>
       </Router>
     </ThemeContext.Provider>
