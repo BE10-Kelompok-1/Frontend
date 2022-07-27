@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate, Link } from "react-router-dom";
 
-import Layout from '../components/Layout'
 import Logo from "../asset/logo-inline.png"
 import Logo2 from "../asset/logo.png"
 import Button from "../components/Button";
@@ -11,7 +10,6 @@ export default function Register() {
   const navigate = useNavigate();
 
   return (
-    <Layout>
             <div className="flex align-items:center w-full min-h-screen bg-cover bg-[url('../asset/loginpage-bg.jpeg')]">
                 <div className="w-8/12 m-auto flex justify-between mt-10 sm:mt-32 mb-20">
                     <div className="hidden w-1/2 sm:block mt-32 2xl:scale-150">
@@ -50,6 +48,5 @@ export default function Register() {
                     </div>
                 </div>
             </div>
-        </Layout>
   )
 }
