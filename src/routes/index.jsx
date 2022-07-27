@@ -6,13 +6,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages";
 import Login from "../pages/Login";
 import Profile from "../pages/profile";
+import ProfileEdit from "../pages/profile/edit";
 import Register from "../pages/Register";
-
 
 import { ThemeContext } from "../utils/context";
 import { reduxAction } from "../utils/redux/actions/action";
 
-axios.defaults.baseURL = "https://virtserver.swaggerhub.com/lukmanhafidz/SocialMediaAppAPI/1.0.0"
+axios.defaults.baseURL =
+  "https://virtserver.swaggerhub.com/lukmanhafidz/SocialMediaAppAPI/1.0.0";
 
 export default function AppRouter() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export default function AppRouter() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/profile/:user_id" element={<ProfileEdit />} />
           <Route path="/register" element={<Register />}></Route>
         </Routes>
       </Router>
