@@ -50,7 +50,6 @@ const Login = () => {
       };
 
     return(
-        <Layout>
             <div className="flex align-items:center w-full min-h-screen bg-cover bg-[url('../asset/loginpage-bg.jpeg')]">
                 <div className="w-8/12 m-auto flex justify-between">
                     <div className="hidden w-1/2 sm:block mt-20 2xl:scale-150">
@@ -72,7 +71,6 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-        </Layout>
     )
 }
 
