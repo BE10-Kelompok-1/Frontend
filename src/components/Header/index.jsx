@@ -13,11 +13,11 @@ import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function Header() {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const location = useLocation();
 
   return (
     <div className="h-10 md:hidden mx-0 my-auto py-1 px-4">
-      {pathname !== "/profile" ? (
+      {location.key === "default" ? (
         <div className="flex justify-between items-center">
           <MdHome size={30} />
           <FaMoon size={20} />
