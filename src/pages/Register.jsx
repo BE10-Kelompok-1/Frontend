@@ -1,13 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from "react-router-dom";
 
 import Logo from "../asset/logo-inline.png"
-import Logo2 from "../asset/logo.png"
 import Button from "../components/Button";
+import CustomInput from '../components/CustomInput';
 
-export default function Register() {
+import { apiRequest } from "../utils/apiRequest"
 
-  const navigate = useNavigate();
+const Register = () => {
+
+    const navigate = useNavigate();
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [birthdate, setBirthdate] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [disabled, setDisabled] = useState(true);
+
+    useEffect(() => {
+        if(firstName && lastName && username && email && password && birtdate){
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+    }, [firstName, lastName, username, email, password, birthdate]);
+
+    const handleSubmit = async (e) => {
+        setLoading(true);
+        e.preventDefault();
+        const body = {
+            firstname: firstName,
+            lastname: lastName,
+            username,
+            email,
+            password,
+            birthdate,
+        };
+        apiRequest("users", "post", body)
+          .then((res) => {
+            console.log(res);
+            const { message } = res;
+            if (message) {
+              navigate("/login");
+            }
+            alert(message);
+          })
+          .catch((err) => {
+            const { message } = err.response.message;
+            alert(message);
+          })
+          .finally(() => setLoading(false));
+      };
 
   return (
             <div className="flex align-items:center w-full min-h-screen bg-cover bg-[url('../asset/loginpage-bg.jpeg')]">
@@ -21,18 +66,48 @@ export default function Register() {
                         <h1 className='text-white font-semibold text-2xl mx-auto sm:hidden'>Sign Up</h1>
                         <h2 className='text-white text-sm opacity-70 mx-auto mb-6 sm:hidden'>Its easier to register now</h2>
                         <form action="">
-                          <p className='text-sm text-white sm:text-black'>First Name</p>
-                          <input type="text" placeholder="Jack" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-3" />
-                          <p className='text-sm text-white sm:text-black'>Last Name</p>
-                          <input type="text" placeholder="Sparrow" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-3" />
-                          <p className='text-sm text-white sm:text-black'>User Name</p>
-                          <input type="text" placeholder="jacks345" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-3" />
-                          <p className='text-sm text-white sm:text-black'>Email</p>
-                          <input type="email" placeholder="jacks@alterra.id" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-3" />
-                          <p className='text-sm text-white sm:text-black'>Password</p>
-                          <input type="text" placeholder="Enter Password" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-3" />
-                          <p className='text-sm text-white sm:text-black'>Birth Date</p>
-                          <input type="date" placeholder="First Name" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-3" />
+                            <CustomInput 
+                            ptext="First Name"
+                            id="input-firstName"
+                            type="text"
+                            placeholder="Jack"
+                            onChange={(e) => setFirstName(e.target.value)}
+                            />
+                            <CustomInput 
+                            ptext="Last Name"
+                            id="input-lastName"
+                            type="text"
+                            placeholder="Sparrow"
+                            onChange={(e) => setLastName(e.target.value)}
+                            />
+                            <CustomInput 
+                            ptext="User Name"
+                            id="input-userName"
+                            type="text"
+                            placeholder="jacks345"
+                            onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <CustomInput 
+                            ptext="Email"
+                            id="input-email"
+                            type="email"
+                            placeholder="jacks@alterra.id"
+                            onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <CustomInput 
+                            ptext="Password"
+                            id="input-password"
+                            type="password"
+                            placeholder="Enter Password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <CustomInput 
+                            ptext="Birth Date"
+                            id="input-birthdate"
+                            type="date"
+                            placeholder=""
+                            onChange={(e) => setBirthdate(e.target.value)}
+                            />
                           <div className='flex flex-row justify-around mt-7 sm:justify-center'>
                           <input type="checkbox" className='mr-2' />
                           <p className='text-white text-sm opacity-70 sm:text-black'>I accept the policy and terms</p>
@@ -43,10 +118,12 @@ export default function Register() {
                         </form>
                         <div className="flex flex-row justify-between mt-2">
                             <p className="text-blue-500 text-xs">Have an account?</p>
-                            <p className="text-white text-xs sm:text-black">Login Now</p>
+                            <Link to={"/login"}><p className="text-white text-xs cursor-pointer sm:text-black">Login Now</p></Link>
                         </div>
                     </div>
                 </div>
             </div>
   )
 }
+
+export default Register
