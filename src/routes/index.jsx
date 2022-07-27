@@ -7,6 +7,7 @@ import Home from "../pages";
 import Login from "../pages/Login";
 import Profile from "../pages/profile";
 import Register from "../pages/Register";
+import SecurityQuestion from "../pages/SecurityQuestion";
 
 
 import { ThemeContext } from "../utils/context";
@@ -35,6 +36,7 @@ export default function AppRouter() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/security" element={<SecurityQuestion />}></Route>
         </Routes>
       </Router>
     </ThemeContext.Provider>
