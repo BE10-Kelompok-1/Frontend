@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Profile from "../pages/profile";
 import ProfileEdit from "../pages/profile/edit";
 import Register from "../pages/Register";
+import SecurityQuestion from "../pages/SecurityQuestion";
 
 import { ThemeContext } from "../utils/context";
 import { reduxAction } from "../utils/redux/actions/action";
@@ -37,6 +38,7 @@ export default function AppRouter() {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/profile/:user_id" element={<ProfileEdit />} />
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/security" element={<SecurityQuestion />}></Route>
         </Routes>
       </Router>
     </ThemeContext.Provider>
