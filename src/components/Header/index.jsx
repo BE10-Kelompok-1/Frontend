@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { Menu, Transition } from "@headlessui/react";
@@ -10,17 +10,36 @@ import {
   MdChevronLeft,
 } from "react-icons/md";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { ThemeContext } from "../../utils/context";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { theme, setTheme } = useContext(ThemeContext);
+  const handleChangeTheme = (mode) => {
+    setTheme(mode);
+  };
 
   return (
     <div className="h-10 md:hidden mx-0 my-auto py-1 px-4">
       {location.key === "default" ? (
         <div className="flex justify-between items-center">
           <MdHome size={30} />
-          <FaMoon size={20} />
+          <button type="button" className="p-1 rounded-full">
+            {theme === "light" ? (
+              <FaMoon
+                color="dark"
+                size={20}
+                onClick={() => handleChangeTheme("dark")}
+              />
+            ) : (
+              <FaSun
+                color="white"
+                size={20}
+                onClick={() => handleChangeTheme("light")}
+              />
+            )}
+          </button>
           <Menu
             as="div"
             className="relative inline-flex items-center text-left"
@@ -44,7 +63,9 @@ export default function Header() {
                       <Link
                         to={"/profile"}
                         className={`${
-                          active ? "bg-[#F3B405] text-white" : "text-gray-900"
+                          active
+                            ? "bg-[#F3B405] dark:bg-white text-white dark:text-black"
+                            : "text-black dark:text-white"
                         } group flex w-full items-center rounded-md px-1 py-2 text-sm`}
                       >
                         <MdAccountCircle size={20} className="mx-1" /> Profile
@@ -57,7 +78,9 @@ export default function Header() {
                     {({ active }) => (
                       <button
                         className={`${
-                          active ? "bg-[#F3B405] text-white" : "text-gray-900"
+                          active
+                            ? "bg-[#F3B405] dark:bg-white text-white dark:text-black"
+                            : "text-black dark:text-white"
                         } group flex w-full items-center rounded-md px-1 py-2 text-sm`}
                       >
                         <MdLogout size={20} className="mx-1" /> Logout
