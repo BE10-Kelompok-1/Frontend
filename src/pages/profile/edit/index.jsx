@@ -1,11 +1,11 @@
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { MdAccountCircle, MdPhotoCamera } from "react-icons/md";
 
 import Layout from "../../../components/Layout";
 
 export default function ProfileEdit() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { user_id } = useParams();
   return (
     <Layout>
@@ -15,7 +15,7 @@ export default function ProfileEdit() {
             <MdAccountCircle size={200} />
             <MdPhotoCamera
               size={20}
-              className="absolute w-14 h-14 bottom-0 right-0 bg-white rounded-full p-1"
+              className="absolute w-14 h-14 bottom-0 right-0 bg-white dark:bg-black rounded-full p-1"
             />
           </div>
         </div>
@@ -27,7 +27,7 @@ export default function ProfileEdit() {
             <input
               type="text"
               placeholder="Username"
-              className="input w-full bg-inherit border-b-2 border-black"
+              className="input w-full bg-inherit border-b-2 border-black dark:border-white"
             />
           </div>
           <div className="inline-flex">
@@ -38,7 +38,7 @@ export default function ProfileEdit() {
               <input
                 type="text"
                 placeholder="Firstname"
-                className="input input-bordered w-full bg-inherit border-b-2 border-black"
+                className="input input-bordered w-full bg-inherit border-b-2 border-black dark:border-white"
               />
             </div>
             <div className="form-control w-full">
@@ -48,7 +48,7 @@ export default function ProfileEdit() {
               <input
                 type="text"
                 placeholder="Lastname"
-                className="input input-bordered w-full bg-inherit border-b-2 border-black"
+                className="input input-bordered w-full bg-inherit border-b-2 border-black dark:border-white"
               />
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function ProfileEdit() {
             <input
               type="email"
               placeholder="Email"
-              className="input input-bordered w-full bg-inherit border-b-2 border-black"
+              className="input input-bordered w-full bg-inherit border-b-2 border-black dark:border-white"
             />
           </div>
           <div className="form-control w-full">
@@ -69,7 +69,7 @@ export default function ProfileEdit() {
             <input
               type="password"
               placeholder="Password"
-              className="input input-bordered w-full bg-inherit border-b-2 border-black"
+              className="input input-bordered w-full bg-inherit border-b-2 border-black dark:border-white"
             />
           </div>
           <div className="form-control w-full">
@@ -79,7 +79,7 @@ export default function ProfileEdit() {
             <input
               type="number"
               placeholder="dd/mm/yyyy"
-              className="input input-bordered w-full bg-inherit border-b-2 border-black"
+              className="input input-bordered w-full bg-inherit border-b-2 border-black dark:border-white"
             />
           </div>
         </div>
