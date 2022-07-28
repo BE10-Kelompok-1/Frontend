@@ -4,4 +4,6 @@ const ctx = {
   theme: "",
   setTheme: () => {},
 };
+
 export const ThemeContext = createContext(ctx);
+export const TokenContext = createContext("");

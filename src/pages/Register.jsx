@@ -20,7 +20,7 @@ const Register = () => {
     const [disabled, setDisabled] = useState(true);
 
     useEffect(() => {
-        if(firstName && lastName && username && email && password && birtdate){
+        if(firstName && lastName && username && email && password && birthdate){
             setDisabled(false);
         } else {
             setDisabled(true);
@@ -48,7 +48,7 @@ const Register = () => {
             alert(message);
           })
           .catch((err) => {
-            const { message } = err.response.message;
+            const { message } = err.response;
             alert(message);
           })
           .finally(() => setLoading(false));
@@ -65,7 +65,7 @@ const Register = () => {
                     <div onSubmit={(e) => handleSubmit(e)} className="p-6 rounded-2xl bg-transparent h-auto w-80 flex flex-col sm:bg-white 2xl:scale-150">
                         <h1 className='text-white font-semibold text-2xl mx-auto sm:hidden'>Sign Up</h1>
                         <h2 className='text-white text-sm opacity-70 mx-auto mb-6 sm:hidden'>Its easier to register now</h2>
-                        <form action="">
+                        <form>
                             <CustomInput 
                             ptext="First Name"
                             id="input-firstName"
