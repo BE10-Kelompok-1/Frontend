@@ -25,7 +25,6 @@ export default function Profile() {
       <div className="px-6 py-4">
         <Link
           to={`/profile/1`}
-          type="button"
           className="md:hidden btn btn-block rounded-full bg-[#F3B405] dark:bg-[#2C3E50] text-white border-none font-bold text-lg"
         >
           Edit Profile
