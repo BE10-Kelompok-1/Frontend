@@ -36,7 +36,7 @@ const Login = () => {
         };
         apiRequest("login", "post", body)
           .then((res) => {
-            const { token } = res.token;
+            const { token } = res;
             localStorage.setItem("token", token);
             dispatch(reduxAction("IS_LOGGED_IN", true));
             alert(res.message);
@@ -75,11 +75,10 @@ const Login = () => {
                             />
                         <Button kelas={"bg-yellow-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-40 mx-auto mt-3 sm:w-full rounded"} label="Sign In" />
                         <div className="flex flex-row justify-between mt-2">
-                            <p className="text-blue-500 text-xs sm:w-full text-right">forgot password?</p>
-                            <Link to={"/register"}><p className="text-white text-xs sm:hidden">Create an account</p></Link>
+                            <p className="text-blue-500 text-xs">forgot password?</p>
+                            <Link to={"/register"}><p className="text-white text-xs sm:text-black">Create an account</p></Link>
                         </div>
                         <hr className="hidden sm:block" />
-                        <Button kelas={"hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-40 mx-auto mt-3 sm:block"} label="Sign Up" />
                     </form>
                 </div>
             </div>
