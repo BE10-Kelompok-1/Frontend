@@ -56,7 +56,7 @@ export default function Header() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute right-0 top-8 w-auto rounded-md shadow-lg z-50 bg-white">
+              <Menu.Items className="absolute right-0 top-8 w-auto rounded-md shadow-lg z-50">
                 <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
