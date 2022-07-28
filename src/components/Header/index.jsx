@@ -14,7 +14,7 @@ import { ThemeContext } from "../../utils/context";
 
 export default function Header() {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { theme, setTheme } = useContext(ThemeContext);
   const handleChangeTheme = (mode) => {
     setTheme(mode);
@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <div className="h-10 md:hidden mx-0 my-auto py-1 px-4">
-      {location.key === "default" ? (
+      {pathname === "/" ? (
         <div className="flex justify-between items-center">
           <MdHome size={30} />
           <button type="button" className="p-1 rounded-full">
@@ -76,7 +76,8 @@ export default function Header() {
                 <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Link
+                        to={"/login"}
                         className={`${
                           active
                             ? "bg-[#F3B405] dark:bg-white text-white dark:text-black"
@@ -84,7 +85,7 @@ export default function Header() {
                         } group flex w-full items-center rounded-md px-1 py-2 text-sm`}
                       >
                         <MdLogout size={20} className="mx-1" /> Logout
-                      </button>
+                      </Link>
                     )}
                   </Menu.Item>
                 </div>
