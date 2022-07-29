@@ -1,11 +1,40 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { MdAccountCircle } from "react-icons/md";
+import { reduxAction } from "../../utils/redux/actions/action";
+import { apiRequest } from "../../utils/apiRequest";
 
 import Layout from "../../components/Layout";
 import CardPost from "../../components/CardPost";
 
 export default function Profile() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    apiRequest("users", "get")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        const { data } = err.response;
+        if ([401, 403].includes(data.code)) {
+          localStorage.removeItem("token");
+          dispatch(reduxAction("IS_LOGGED_IN", false));
+          navigate("/login");
+        }
+        alert(data.message);
+      })
+      .finally(() => setLoading(false));
+  };
   return (
     <Layout>
       <div className="flex flex-col h-min-screen w-full">

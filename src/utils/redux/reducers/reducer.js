@@ -1,14 +1,14 @@
 const initialState = {
-  favorites: [],
+  isLoggedIn: false,
   loading: false,
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_FAVORITE":
+    case "IS_LOGGED_IN":
       return {
         ...state,
-        favorites: action.payload,
+        isLoggedIn: action.payload,
       };
     case "START_LOADING":
       return {
